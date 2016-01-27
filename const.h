@@ -7,10 +7,10 @@
 
 #include<iostream>
 #include<string>
+#include "haha.h"
 using namespace std;
 const int tt=2;
 static int st=3;
-int ls=4;
 const class test{
 
 public:

@@ -7,24 +7,23 @@
 
 #include<iostream>
 using namespace std;
-template<class Type>
-struct Test{
-	Type a;
+class Test{
+	static int t;
+	public:
 	Test(int i){
-		a=i;
+		t=i;
 	}
+	//class testchild;
+	//friend testchild;
 	class testchild{
 		public:
 	 static int a;
-	 void f()
-	 {
-		 cout<<"我是testchild"<<endl;
-	 }
+	 void f();
 	 static int ch;
 	};
 	Test operator=(const Test &p)
 	{
-		this.a=p.a;
+		this->t=p.t;
 		//只要是函数中就不可以包含静态数据
 		//但可以有静态函数，因为静态函数的目的就是为了给函数加一个限制
 		//比如只可以访问静态数据，
@@ -35,16 +34,18 @@ struct Test{
 			//static int loc;//局部中不可以
 		};
 		int i;
-		/**
-		void f(){
-
-		}
-		*/
-		return this;
+		return *this;
 	}
 };
-template<class Type>
-int	Test<Type>::testchild::a=1;
+//静态数据在未使用前不定义也可以编译通过，但一旦要使用，则必须首先定义。
+int Test::t=9;
+int Test::testchild::a=7;
+void Test::testchild::f()
+{
+		 cout<<t<<endl;
+		 cout<<a<<endl;
+		 cout<<"我是testchild"<<endl;
+}
 class mumble
 {
 
@@ -76,6 +77,8 @@ void ttt()
 
 }
 int main(){
+	Test::testchild m;
+	m.f();
 	//类里面可以定义类，调用方法可调用静态一样使用::,
 	//operator int()实际上就是强制转换类型,并且只能是类成员函数
 	return 0;
