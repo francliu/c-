@@ -1,7 +1,6 @@
-总用量 10744
+总用量 10740
 -rwxrwxr-x 1 liujianfei liujianfei     9622  1月 19 10:59 a.out
--rwxrwxrwx 1 liujianfei liujianfei        0  1月 28 10:53 bian_file.txt
--rwxrwxrwx 1 liujianfei liujianfei        0  1月 16 19:52 bian_file.txt~
+-rwxrwxrwx 1 liujianfei liujianfei        0  1月 16 19:52 bian_file.txt
 -rwxrwxrwx 1 liujianfei liujianfei     8890  1月 11 18:29 bina
 -rwxrwxrwx 1 liujianfei liujianfei     8756  1月  8 18:52 bina_file
 -rwxrwxrwx 1 liujianfei liujianfei     1002  1月 11 20:56 bina_file.c
@@ -13,4 +12,5 @@ drwxrwxr-x 2 liujianfei liujianfei     4096  1月 25 15:58 constructor
 -rw-rw-r-- 1 liujianfei liujianfei      548  1月 19 22:25 const_test.cpp
 -rwxrwxr-x 1 liujianfei liujianfei     9575  1月 18 21:48 empty_class
 -rw-rw-r-- 1 liujianfei liujianfei      622  1月 18 21:50 empty_class.cpp
--rwxrwxr-x 1 liujianfei liujian
+-rwxrwxr-x 1 liujianfei liujianfei     9312  1月 24 17:52 extern
+-rw-rw-r-- 1 liujianfei liujianfei     
