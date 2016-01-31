@@ -48,36 +48,47 @@ main(void)
   *ptr = 3;
   
   ptr++;
-  namelist *cur = (namelist *)ptr;
+  int num=0;
+  while(num<10)
+  {
+	  num++;
+  struct namelist *cur = (namelist *)ptr;
 
   // store items
-  tmp.id = 1;
+  tmp.id = num;
   strcpy(tmp.name, "Nellson");
   *cur++ = tmp;
-  tmp.id = 2;
+  tmp.id = num;
   strcpy(tmp.name, "Daisy");
   *cur++ = tmp;
-  tmp.id = 3;
+  tmp.id = num;
   strcpy(tmp.name, "Robbie");
   *cur++ = tmp;
-  
+  sleep(2);
+  }
   exit(0);
  } else{ // parent process
-  sleep(1);
+  sleep(2);
   shmctl(shmid, IPC_STAT, &buff);
+  int num=0;
+  while(num<10)
+  {
   ptr = (int *) shmat(shmid, NULL, 0); 
   struct namelist tmp;
-
-  int total = *ptr;
+  int *t=ptr;
+	  num++;
+  int total = 3;
   printf("\nThere is %d item in the shm\n", total); 
   
-  ptr++;
-  namelist *cur = (namelist *)ptr;
+  t++;
+  struct namelist *cur = (namelist *)t;
 
   for (int i = 0; i< total; i++) {
    tmp = *cur;
    printf("%d: %s\n", tmp.id, tmp.name);
    cur++;
+  }
+  sleep(1);
   }
 
   printf("\n");
@@ -89,5 +100,4 @@ main(void)
  printf("Parent %d get child status:%d\n", getpid(), status);
  return 0;
 }
-
  

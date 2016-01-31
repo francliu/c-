@@ -17,7 +17,7 @@
 
 #define FILE_MODE (S_IRUSR | S_IWUSR)
 
-const char shmfile[] = "./tmp.shmm";
+const char shmfile[] = "./tmp.sh";
 //const char shmfile[] = "/dev/zero";
 const int size = 100;
 
@@ -56,39 +56,47 @@ int main(void)
   *ptr = 3;
   
   ptr++;
-  namelist *cur = (namelist *)ptr;
-
-  // store items
-  tmp.id = 1;
-  tmp.test=1.0;
-  strcpy(tmp.name, "Nellson");
-  *cur++ = tmp;
-  tmp.id = 2;
-  tmp.test=2.0;
-  strcpy(tmp.name, "Daisy");
-  *cur++ = tmp;
-  tmp.id = 3;
-  tmp.test=3.0;
-  strcpy(tmp.name, "Robbie");
-  *cur++ = tmp;
-
+  int num=0;
+  while(num<10)
+  {
+	 num++;
+	 namelist *cur = (namelist *)ptr;
+		// store items
+	 tmp.id = num;
+	 tmp.test=1.0;
+	 strcpy(tmp.name, "Nellson");
+	 *cur++ = tmp;
+	 tmp.id = num;
+	 tmp.test=2.0;
+	 strcpy(tmp.name, "Daisy");
+	 *cur++ = tmp;
+	 tmp.id = num;
+	 tmp.test=3.0;
+	 strcpy(tmp.name, "Robbie");
+	 *cur++ = tmp;
+	 sleep(3);
+  }
   exit(0);
  } else{ // parent process
   sleep(3);
-  struct namelist tmp;
-
-  int total = *ptr;
-  printf("\nThere is %d item in the shm\n", total); 
-  
-  ptr++;
-  namelist *cur = (namelist *)ptr;
-
-  for (int i = 0; i< total; i++) {
-   tmp = *cur;
-   printf("%d:%d:%s\n", tmp.id,tmp.test, tmp.name);
-   cur++;
+  int num=0;
+  while(num<10)
+  {
+	 struct namelist tmp;
+     int *t = ptr;
+	 num++;
+	 int total = *t;
+	 printf("\nThere is %d item in the shm\n", total);
+	 t++;
+	 namelist *cur = (namelist *)t;
+	 for (int i = 0; i< total; i++) 
+	 {
+	    tmp = *cur;
+		printf("%d:%s\n", tmp.id, tmp.name);
+		cur++;
+	 }
+	 sleep(3);
   }
-  
   printf("\n");
   waitpid(pid, &status, 0);
  }

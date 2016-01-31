@@ -10,7 +10,7 @@
 #include <time.h>
 #include <list>
 #include <string.h>
-
+#include <syslog.h>
 #define BUF_SIZE 1024                 //默认缓冲区
 #define SERVER_PORT 44444             //监听端口
 #define SERVER_HOST "127.0.0.1"   //服务器IP地址
@@ -23,7 +23,7 @@
 #define CMD_EXIT "EXIT"
 
 //两个有用的宏定义：检查和赋值并且检测
-#define CHK(eval) if(eval < 0){perror("eval"); exit(-1);}
+#define CHK(eval) if(eval < 0){syslog(LOG_ERR,"ruptimed:accpet %s",perror("eval")); exit(-1);}
 #define CHK2(res, eval) if((res = eval) < 0){perror("eval"); exit(-1);}
 
 //================================================================================================
